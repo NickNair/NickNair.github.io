@@ -1,0 +1,365 @@
+\documentclass[a4paper,20pt]{article}
+\usepackage{academicons}
+\usepackage{latexsym}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome}
+\usepackage{hyperref}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.530in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.45in}
+\addtolength{\textheight}{1in}
+
+\urlstyle{rm}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-10pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeItemWithoutTitle}[1]{
+  \item\small{
+    {\vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheadingEd}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      #3  & #4 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} \small \textit{#4} & #2 \\
+      \textit{#3} &  \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[5]{ % Added a fifth argument
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{#3} & \textit{#4} \\
+    \end{tabular*} 
+    \vspace{-2pt}
+    \small #5 % This allows for additional text under the entry
+    \vspace{-5pt}
+}
+
+\newcommand{\resumeSubheadingNew}[6]{ % Added a sixth argument
+ \item
+    \begin{tabular*}{1\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1}, \small \textit{#3} \small #4 & #2 \\
+    \end{tabular*} 
+    \small \textbf{Daily Supervisor:} #5 \\
+    \small \textbf{Supervisors:} #6
+}
+
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-3pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-----------------------------
+%%%%%%  CV STARTS HERE  %%%%%%
+
+\begin{document}
+
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{{\LARGE Nikhil Nair}  }  & \\
+ \textbf{MSc Systems and Control}   & \href{https://scholar.google.com/citations?hl=en&user=sPGKHooAAAAJ}{\faGoogle} 
+ \href{https://github.com/NickNair}{\faGithub}  \href{https://www.linkedin.com/in/nicknair/}{\faLinkedin}    \\
+ \textbf{Delft University of Technology (TU Delft)} & \faPhone +31 0644164182 \\
+& \href{mailto:nikhilnicky972@gmail.com} { \faEnvelope : www.nikhilnicky972@gmail.com\ }
+\end{tabular*}
+
+
+% \section{About}
+
+% \textbf{Roboticist}. Aspiring "full-stack Robotics Engineer" with focus areas in controls, path-planning, robot perception and SLAM.
+
+
+%-----------EDUCATION-----------------
+
+\section{About Me}
+
+\textbf{Robotics Software Engineer} with \textbf{3+ years of experience} developing \textbf{C++}, \textbf{Python}, and \textbf{MATLAB/Simulink} systems across ROS 2, simulation, perception, planning, control, and sensor integration. Background includes \textbf{project-based software development} for industrial robotics, \textbf{autonomous systems}, and \textbf{research-driven applications}, with hands-on work in Docker, Linux, Git, Gazebo, MoveIt, point-cloud processing, sensor fusion, and custom hardware interfaces. Strong technical foundation in systems and control, including modelling, Kalman filtering, optimal control, MPC, reinforcement learning, \textbf{algorithm development}, \textbf{MATLAB-based simulation}, and \textbf{model-based development}. Experienced in \textbf{translating complex technical requirements into working software demonstrators}, validating systems through simulation and field testing, writing \textbf{technical documentation}, and collaborating with \textbf{scientists, engineers, and clients} to deliver practical \textbf{R\&D software solutions}.
+
+
+
+
+
+
+\section{Education}
+   
+    \resumeSubheadingEd
+      {Delft University of Technology }{2023 - 2025}
+       {MSc \textbf{Systems and Contro}l }{ \textbf{Grade: Cum Laude, Courses : 8.43/10, Thesis: 9.0/10}  } \\
+       
+        \\
+        \vspace{5pt}
+    \resumeSubheadingEd
+      {National Institute of Technology Karnataka  }{2018-2022}
+       {B.Tech in \textbf{Electrical and Electronics Engineering}, minor in Computer Science }  {\textbf{CGPA 8.42/10}}
+        \\
+        \vspace{5pt}
+    \vspace{5pt}
+
+\section{Skills Summary}
+\resumeSubHeadingListStart
+  \resumeSubItem{Languages}{C++, Python, C, MATLAB & Simulink}
+  \resumeSubItem{Frameworks}{ROS 1 \& 2, TensorFlow, PyTorch, NumPy}
+  \resumeSubItem{Tools \& Platforms}{Git, Docker, Linux}
+  \resumeSubItem{Systems and Control}{Dynamical System Modelling, Kalman Filtering, Nonlinear Control, Optimal Control, Model Predictive Control, Reinforcement Learning}
+    
+  % \resumeSubItem{Control \& Planning}{PID, LQR, MPC, $H_\infty$, pole placement, observer-based control}
+  % \resumeSubItem{State Estimation}{Kalman filtering, Luenberger observer}
+  % \resumeSubItem{Devices}{NVIDIA Jetson, Raspberry Pi, Arduino}
+  % \resumeSubItem{C++ Concepts}{Smart pointers, RAII, lambda functions, CMake }
+  % \resumeSubItem{Python Libraries}{OpenCV, pandas, matplotlib}
+\resumeSubHeadingListEnd
+    \vspace{-5pt}
+
+% \section{Education}
+   
+%     \resumeSubheadingEd
+%       {Delft University of Technology }{2023 - 2025}
+%        {MSc Systems and Control }{ \textbf{Grade: Cum Laude, Thesis: 9.0/10, Courses: 8.44/10}  } \\
+       
+%         \\
+%         \vspace{5pt}
+%     \resumeSubheadingEd
+%       {National Institute of Technology Karnataka  }{2018-2022}
+%        {B.Tech in Electrical and Electronics Engineering, minor in Computer Science }  {\textbf{GPA: 8.42}}
+%         \\
+%         \vspace{5pt}
+%     \vspace{5pt}
+
+    
+ \vspace{5pt}
+
+\section{Master Thesis}
+\resumeSubheadingNew
+  {Optimal Control of Soft Robots}{\textbf{September 2024 – September 2025}}
+  {Delft University of Technology}{\href{https://repository.tudelft.nl/record/uuid:cc50c41d-1f8d-4328-adda-f1b2e3117635}{\faExternalLink}} % Right-side second row left blank
+  {Dr. Daniel Feliu Talegón}
+  {Prof. Cosimo Della Santina, Prof. Tamás Keviczky}
+\vspace{2}
+
+\textit{Investigating Differential Dynamic Programming (DDP) for continuum soft robots modeled with the Geometric Variable Strain (GVS) framework. Benchmarked DDP vs. Partial Feedback Linearization on a soft inverted pendulum and used analytical gradients (RNEA) to improve convergence.}
+
+\vspace{-5pt}
+\section{Work Experience}
+
+\vspace{5pt}
+    \resumeSubheading
+		{Mechatronics Consultant}{\textbf{Nov 2025 - Present}}{ALTEN Nederlad B.V, Netherlands  (Client: Grimbergen Industrial Systems) (Full-time) }{}
+		\begin{itemize}
+       \item Developing an end-to-end robotic welding workflow (perception → planning → execution) using ROS2, MoveIt2, and custom control interfaces within a \textbf{Docker}-based development environment (C++ and Python). \vspace{-2pt}
+\item Ported legacy ROS1 industrial robot drivers to ROS2 and developed a custom \textbf{ROS2 Control} hardware interface (C++) for a \textbf{FANUC 30iB controller} using \textbf{TCP/IP Ethernet} communication. \vspace{-2pt}
+
+\item Integrating \textbf{Zivid} 3D camera and industrial laser scanner for perception-driven welding applications, implementing point cloud processing pipelines using \textbf{Open3D} and \textbf{PCL} (plane detection, edge detection, weld seam localization). \vspace{-2pt}
+ \vspace{2}
+        \item Conducting feasibility analysis and literature review on hydraulic excavator automation, including sensor retrofitting strategies, control architectures, and motion planning for closed-loop kinematic chains. \vspace{-2pt}
+
+\item Designing and implementing a full \textbf{ROS2}-based simulation pipeline for excavator automation using Gazebo and \textbf{MoveIt2}, including modeling of closed-chain linkages and development of custom inverse kinematics solutions. \vspace{-2pt}
+\end{itemize}
+
+\vspace{5pt}
+\resumeSubheading
+{Visiting Robotics Engineer}{\textbf{May 2025 - Aug 2025}}
+{Eternal.ag, Germany (Part-time)}{}
+\begin{itemize}
+\vspace{2}
+
+\item Contributed to the deployment and field testing of a greenhouse mobile manipulation platform combining a custom mobile base with a\textbf{ UR5e manipulator}. \vspace{-2pt}
+
+\item Supported integration and debugging of the MoveIt-based manipulation stack and perception pipeline, resolving calibration, planning, and execution issues during on-site deployment. \vspace{-2pt}
+
+\item Developed a \textbf{ROS2 driver} in C\textbf{++} for a custom mobile base using \textbf{CANopen motor controllers}, implementing PDO/SDO communication and object dictionary mapping to enable low-level actuation and real-time odometry integration. \vspace{-2pt}
+
+\item Worked within a \textbf{Docker}-based development environment using C++ and Python, integrating GPU-accelerated components from the \textbf{NVIDIA Isaac robotics stack} (including \textbf{cuMotion and nvBlox}) for perception and motion planning. \vspace{-2pt}
+
+\end{itemize}
+
+  \vspace{5pt}
+   \resumeSubheading
+{Robotics Engineer}{\textbf{September 2022 - August 2023}}
+{\href{https://accelerationrobotics.com/about.php}{Acceleration Robotics, Pune }  Client: DRDO–CAIR, Bengaluru, India}{}
+\begin{itemize}
+\vspace{2}
+
+\item Led development of multi-domain simulation environments (ground, aerial, and underwater vehicles) in Gazebo (Ignition/Gazebo Garden) to validate autonomy stacks before hardware testing. \vspace{-2pt}
+
+\item Ported simulation features and plugins from Gazebo Classic to modern Gazebo (Ignition), developing custom C++ model and sensor plugins to replicate realistic sensor behavior. \vspace{-2pt}
+
+\item Architected and developed a plugin-based ROS 2 sensor fusion framework in C++ built on the ANYbotics GridMap library, enabling multi-layer environmental representation with circular buffer storage. \vspace{-2pt}
+
+\item Designed and implemented fusion algorithms combining 3D LiDAR and camera data into unified costmaps for navigation and perception applications. \vspace{-2pt}
+
+\item Served as primary technical interface for the client, translating system requirements into deployable ROS 2 and simulation solutions. \vspace{-2pt}
+
+\end{itemize}
+
+ 
+% \vspace{-5pt}
+% \section{Internships}
+% \vspace{5pt}
+%     \resumeSubheading
+% 		{ROS intern}{\textbf{Mar 2021 - May 2022}}{\href{https://news.accelerationrobotics.com/acceleration-robotics-expands-to-india-and-takes-over-technoyantra-to-grow-in-asia/}{Technoyantra, Pune}}{}
+%         \vspace{2}
+%             \begin{itemize}
+%                 \item Built behavior trees using \textbf{BehaviorTree.CPP} for ROS 1 and ROS 2 projects. 
+%                  \vspace{-2pt}
+%                 \item Worked with \textbf{ROS 1 Navigation Stack}, \textbf{MoveIt} and \textbf{open-rmf}.
+%                  \vspace{-2pt}
+%             \end{itemize}
+
+
+\vspace{5pt}
+%     \resumeSubheading
+% 		{Project Intern }{\textbf{September 2021 - December 2021}}{\href{https://www.stochlab.com/}{Stoch Lab, Robert Bosch Centre for Cyber-Physical Systems @IISc, Bangalore}}{}
+%         \begin{itemize}
+%             \item Worked on Quadruped Robots - Stochlite and Stoch3 and learnt about Reinforcement Learning and the Linear RL based walking policy implemented on the robot
+%              \vspace{-5pt}
+%             \item Developed an OROCOS component for an XSens IMU and worked on building a rqt based GUI for robot state monitoring and Tested the walking policy and PID tuning of the joint controllers on Stoch3
+%              \vspace{-5pt}
+%             \item Worked under the guidance of Prof.Shishir Kolathaya, Indian Institute of Science, Bangalore and Aditya Sagi, Project Associate, Indian Institute of Science, Bangalore
+%              \vspace{-5pt}
+%         \end{itemize}
+% \vspace{5pt}
+
+
+\section{Publications}
+\begin{itemize}
+    \item \textbf{N. Nair}, D. Caradonna, A. T. Mathew, F. Renda, C. Della Santina and D. Feliu-Talegón, 
+    \href{https://drive.google.com/file/d/1najC7ucOmu8qEfPPidT854NyIiNNwU56/view?usp=sharing}{"Stabilizing Low-Stiffness Soft Robots at Unstable Equilibria: A Model-Based Optimal Control Approach,"} 
+    \textit{to appear in Proc. 2026 \textbf{ IEEE 65th Conference on Decision and Control (CDC)}}, Dec. 2026. \textbf{[Accepted]}
+    \item D. Caradonna, \textbf{N. Nair}, A. T. Mathew, D. Feliu-Talegón, I. Afgan, E. Falotico, C. Della Santina and F. Renda, 
+    \href{https://arxiv.org/abs/2602.03435}{"Soft Swing-up: Benchmarking Model-Based Optimal Control for Rigid-Soft Underactuated Systems,"}
+    \textit{arXiv preprint}, 2026. \textbf{[Submitted to IEEE Robotics and Automation Letters (RAL)]}
+    \item R. Muduli, \textbf{N. Nair}, S. Kulkarni, M. Singhal, D. Jena and T. Moger, 
+    \href{https://ieeexplore.ieee.org/document/10245225}{"Load Frequency Control of Two-area Power System Using an Actor-Critic Reinforcement Learning Method-based Adaptive PID Controller,"} 
+    \textit{\textbf{2023 IEEE 3rd International Conference on Sustainable Energy and Future Electric Transportation (SEFET)}}, Bhubaneswar, India, 2023, pp. 1-6.
+\end{itemize}
+\vspace{-5pt}
+\section{Controls \& Planning Coursework \href{https://drive.google.com/drive/folders/1AdLS-fYak-uYYj4obE4DexavJcrpGZJA?usp=sharing}{\faExternalLink}}
+\resumeSubHeadingListStart
+  \resumeSubItem{Model Predictive Control (SC42125)}{Implemented constrained MPC for an underactuated wheeled acrobot, including linearization, discretization, reference tracking, and output-feedback MPC.}
+  \resumeSubItem{Integration Project (SC42035)}{Modeled and identified a cart-pole system, implemented Luenberger/Kalman observers, and compared LQR vs. MPC control performance.}
+  \resumeSubItem{Robust Control (SC42145)}{Designed SISO/MIMO controllers for a floating wind turbine using mixed-sensitivity $H_\infty$ design; evaluated tracking and disturbance rejection performance.}
+  \resumeSubItem{Hybrid Systems (SC42075)}{Built a hybrid automaton for a compass-gait walker and developed MPC for adaptive cruise control using MLD modeling and explicit MPC.}
+  \resumeSubItem{Control Engineering (SC42095)}{Designed continuous and discrete controllers for satellite attitude control using pole placement, LQ control, and observer-based output feedback under actuator limits.}
+\resumeSubHeadingListEnd
+
+\vspace{-5pt}
+\section{Selected Projects}
+
+\resumeSubheading
+  {Janitorial Cleaning Robot \href{https://github.com/NickNair/artpark_robotics_challenge}{\faExternalLink} \href{https://www.youtube.com/watch?v=HfuiV0cgzNs}{\faExternalLink}}{\textbf{Jan 2022 – Apr 2022}}
+  {ARTPARK Robotics Challenge, IISc Bangalore \\ \\}{}
+  \textit{Designed and built a ROS1-based janitorial robot capable of autonomous washroom cleaning tasks including trash detection, washbasin sanitization, and floor mopping.}
+  \begin{itemize}
+    \item Built autonomous navigation with LiDAR and depth camera, and integrated a YOLOv4-based object detection pipeline.\vspace{-2pt}
+    \item Built a holonomic driver base with s custom made 6DOF arm. Did PCB design for the electronic subsytem for the base to interface with the otor drivers , teensy, BMS.
+    \item arm was built with DYNMAIELservos dasiy chained; 
+    \item Delivered a Gazebo simulation ahead of the hardware round and contributed to system bring-up under a \$5000 budget.
+  \end{itemize}
+  
+\resumeSubheading
+		{Automatic Generation Control Using an Adaptive PID controller \href{https://github.com/NickNair/Adaptive-PID-controller}{\faExternalLink}}{\textbf{January 2022 - April 2022}}
+		{Bachelor Thesis, National Institute of Technology, Surathkal, Karnataka \\ \\}{}
+  \textit{This project presents an Actor-Critic Reinforcement Learning-based adaptive PID controller for Automatic Generation Control (AGC). Unlike model-based methods that depend on accurate plant models, this approach updates PID parameters in real time, making it more adaptable to varying system configurations.}
+        \begin{itemize}
+            \item Implemented and evaluated control performance under varying system conditions.
+             \vspace{-5pt}
+            % \item This actor-critic policy is implemented as a single RBF kernel implemented as a neural network. The input to the RBF kernel is the Area Control Error(ACE). The kernel outputs the updated parameters of the PID controller
+            %  \vspace{-5pt}
+            % \item The controller was implemented using Python and Matlab
+            %  \vspace{-5pt}
+        \end{itemize}
+\vspace{5pt}
+
+
+% \resumeSubheading
+% 		{Multi-Object Tracking using Kalman Filters \href{https://github.com/NickNair/Multiple-Object-Tracking-using-Kalman-Filter}{\faExternalLink}  }{\textbf{July 2021 - September 2021}}
+% 		{Course Project, Statistical Foundation For Electrical Engineers \\ \\}{}
+%   \textit{This course project aimed to implement a 2D Kalman filter to perform object tracking using the Hungarian Algorithm}
+%         \begin{itemize}
+%             \item Worked under the guidance of Prof.Krishnan C M C, Assistant Professor
+%              \vspace{-5pt}
+%             \item Implemented a 1D and 2D Kalman filter from scratch using Python and used the implemented Kalman Filter along with the Hungarian Algorithm to solve the assignment problem on object detection pipelines
+%              \vspace{-5pt}
+%             \item The object tracker implemented using Kalman filter and Hungarian Algorithm was tested on a opencv based blob detection algorithm and also on a object detector using YoloV4
+%          \vspace{-5pt}
+%         \end{itemize}
+% \vspace{5pt}
+
+% \resumeSubheading
+% 		{Sahayak Bot \href{https://www.youtube.com/watch?v=8mRr_1O6fDU}{\faExternalLink} }{\textbf{December 2020 - April 2021}}
+% 		{eYantra Robotics Challenge 2020-21, IIT, Bombay \\ \\}{}
+%   \textit{The eYantra Robotics Challenge under the Sahayak bot theme involved autonomously navigating a mobile manipulator via waypoints, while detecting, recognizing and picking the objects at each waypoint and placing it at the designated waypoint}
+%         \begin{itemize}
+%             \item Worked as a part of team SB#830 representing NIT Karnataka
+%              \vspace{-5pt}
+%             \item Setup navigation stack and MoveIt on a mobile manipulator performing SLAM, path planning, navigation and manipulation. Used computer vision algorithms to detect and recognise objects and fused the detection's with pointcloud data to pick up the detected objects. 
+%              \vspace{-5pt}
+%         \end{itemize}
+% \vspace{5pt}
+% \resumeSubheading
+% 		{Patrol Fish \href{https://youtu.be/oUK_n2qS3Gc}{\faExternalLink} }{\textbf{December 2019 - April 2020}}
+% 		{eYantra Robotics Challenge 2019-20, IIT, Bombay \\ \\}{}
+%   \textit{The eYantra Robotics Challenge under the Patrol Fish theme involved designing a bio-inspired robotic fish that is capable of traversing in water through an abstract course and send data to the nearest bouy }
+%         \begin{itemize}
+%             \item Worked as a part of team PF#227 representing NIT Karnataka
+%              \vspace{-5pt}
+%             \item Designed a Robotic Fish Chassis and PCBs to mimic a fish. Designed PCBs using ne555 timer IC for bouys.
+%              \vspace{-5pt}
+%             \item Implemented the Lighthill Curve model for fish motion to replicate the motion of a fish on the robot
+%              \vspace{-5pt}
+%         \end{itemize}
+
+% \vspace{-5pt}
+
+
+
+
+\end{document}

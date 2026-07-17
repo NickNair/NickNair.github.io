@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nikhil Nair</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -30,13 +31,62 @@
 
         .hero {
             min-height: 100vh;
+            position: relative;
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
             padding: 2rem;
             text-align: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            gap: 1.1rem;
+            padding: 1.1rem 0;
+            pointer-events: none;
+        }
+
+        .scrim {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(13, 15, 18, 0.72) 0%, rgba(13, 15, 18, 0.8) 55%, rgba(13, 15, 18, 0.9) 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 2.2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: #9aa0a6;
+            transition: color 0.2s ease;
+        }
+
+        .scroll-cue:hover {
+            color: #f4f4f4;
+        }
+
+        .scroll-cue svg {
+            width: 20px;
+            height: 20px;
+            animation: bounce 1.8s infinite;
+            display: block;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
         }
 
         .glitch {
@@ -117,81 +167,13 @@
             text-transform: uppercase;
         }
 
-        .scroll-cue {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #6c7278;
-            text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-            transition: color 0.2s ease;
-        }
-
-        .scroll-cue:hover {
-            color: #f4f4f4;
-        }
-
-        .scroll-cue svg {
-            width: 18px;
-            height: 18px;
-            animation: bounce 1.8s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-
-        /* ---------- Work section ---------- */
-
-        .work {
-            padding: 5rem 1.5rem 6rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .work-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .work-header h2 {
-            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-            font-weight: 900;
-        }
-
-        .work-header p {
-            margin-top: 0.75rem;
-            color: #9aa0a6;
-            font-size: 1rem;
-        }
-
-        .banner {
-            display: block;
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto 3rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-            cursor: pointer;
-        }
+        /* ---------- Marquee background ---------- */
 
         .marquee {
             width: 100%;
             overflow: hidden;
             -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
             mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
-        }
-
-        .marquee + .marquee {
-            margin-top: 1.1rem;
         }
 
         .marquee-track {
@@ -201,27 +183,19 @@
             animation: scroll-x 38s linear infinite;
         }
 
-        .marquee:hover .marquee-track {
-            animation-play-state: paused;
-        }
-
         .marquee.reverse .marquee-track {
             animation-direction: reverse;
         }
 
         .marquee-track img {
-            height: 220px;
+            height: 30vh;
             width: auto;
             border-radius: 8px;
             object-fit: cover;
             display: block;
+            pointer-events: auto;
             cursor: pointer;
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
-            transition: transform 0.3s ease;
-        }
-
-        .marquee-track img:hover {
-            transform: scale(1.04);
         }
 
         @keyframes scroll-x {
@@ -231,7 +205,7 @@
 
         @media (max-width: 700px) {
             .marquee-track img {
-                height: 140px;
+                height: 16vh;
             }
         }
 
@@ -306,6 +280,481 @@
             }
         }
 
+        /* ---------- Tile nav ---------- */
+
+        .tile-nav-wrap {
+            display: flex;
+            justify-content: center;
+            padding: 3.5rem 1.5rem 1.5rem;
+        }
+
+        .tab-bar {
+            display: flex;
+            width: 100%;
+            max-width: 960px;
+            overflow-x: auto;
+            background: #14171b;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+            scrollbar-width: none;
+        }
+
+        .tab-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-tile {
+            flex: 1 1 0;
+            min-width: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 1.2rem;
+            background: transparent;
+            border: none;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            color: #f4f4f4;
+            font-family: inherit;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-tile:last-child {
+            border-right: none;
+        }
+
+        .nav-tile:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-tile.active {
+            background: rgba(0, 255, 249, 0.1);
+            color: #6be9e2;
+        }
+
+        .tile-label {
+            font-size: 1.08rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* ---------- Horizontal sections viewport ---------- */
+
+        .viewport-wrap {
+            position: relative;
+            max-width: 960px;
+            margin: 2rem auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .sections-viewport {
+            display: flex;
+            height: clamp(460px, 66vh, 640px);
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #101216;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .sections-viewport::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sections-viewport > .section {
+            flex: 0 0 100%;
+            max-width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: safe center;
+            padding: 2.5rem 3rem;
+        }
+
+        @media (max-width: 700px) {
+            .sections-viewport > .section {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        .page-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 5;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(13, 15, 18, 0.7);
+            color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.4rem;
+            line-height: 1;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .page-arrow:hover {
+            border-color: #00fff9;
+            background: rgba(13, 15, 18, 0.9);
+        }
+
+        .page-arrow.prev {
+            left: 1rem;
+        }
+
+        .page-arrow.next {
+            right: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .page-arrow {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        /* ---------- Content sections ---------- */
+
+        .section {
+            padding: 5rem 1.5rem;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .section-head {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-head h2 {
+            font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+            font-weight: 900;
+        }
+
+        .accent-bar {
+            display: block;
+            width: 46px;
+            height: 3px;
+            margin-top: 0.7rem;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #ff00c1, #00fff9);
+        }
+
+        .lede {
+            color: #c4c8cc;
+            font-size: 1.2rem;
+            line-height: 1.75;
+            max-width: 720px;
+        }
+
+        /* Experience timeline */
+
+        .timeline-item {
+            padding: 1.6rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .role-block {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .company-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #fff;
+            padding: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+
+        .logo-group {
+            display: flex;
+            gap: 0.4rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-row h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .org {
+            color: #b8bcc0;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+
+        .date {
+            color: #7d8288;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-item ul {
+            margin-top: 0.7rem;
+            padding-left: 1.1rem;
+            color: #c4c8cc;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.45rem;
+        }
+
+        .timeline-item li::marker {
+            color: #00fff9;
+        }
+
+        /* Education */
+
+        .edu-item {
+            padding: 1.4rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .edu-item p.detail {
+            margin-top: 0.5rem;
+            color: #c4c8cc;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .edu-item p.detail em {
+            color: #9aa0a6;
+        }
+
+        /* Skills */
+
+        .skills-group {
+            margin-bottom: 1.7rem;
+        }
+
+        .skills-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .skills-label {
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #9aa0a6;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #14171b;
+            font-size: 0.95rem;
+            color: #e4e6e8;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: #00fff9;
+            color: #6be9e2;
+        }
+
+        /* Projects */
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .project-card {
+            background: #14171b;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .card-top h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .card-links {
+            display: flex;
+            gap: 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .card-links a {
+            color: #9aa0a6;
+            transition: color 0.2s ease;
+        }
+
+        .card-links a:hover {
+            color: #00fff9;
+        }
+
+        .project-card .date {
+            display: block;
+            margin: 0.3rem 0 0.8rem;
+        }
+
+        .project-card p.desc {
+            color: #c4c8cc;
+            font-size: 1.02rem;
+            line-height: 1.7;
+        }
+
+        .project-card p.supervisor {
+            color: #9aa0a6;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin: 0.4rem 0 0.8rem;
+        }
+
+        .project-card p.paper-link {
+            color: #c4c8cc;
+            font-size: 0.93rem;
+            margin-top: 0.8rem;
+        }
+
+        .project-card p.paper-link a {
+            color: #f4f4f4;
+            text-decoration: none;
+            border-bottom: 1px dotted #6c7278;
+        }
+
+        .project-card p.paper-link a:hover {
+            border-bottom-color: #00fff9;
+        }
+
+        /* Publications */
+
+        .pub-list {
+            list-style: none;
+        }
+
+        .pub-item {
+            padding: 1.3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: #c4c8cc;
+        }
+
+        .pub-item a {
+            color: #f4f4f4;
+            text-decoration: none;
+            border-bottom: 1px dotted #6c7278;
+        }
+
+        .pub-item a:hover {
+            border-bottom-color: #00fff9;
+        }
+
+        .pub-item .venue {
+            color: #9aa0a6;
+        }
+
+        .pill {
+            display: inline-block;
+            margin-left: 0.4rem;
+            padding: 0.1rem 0.55rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 999px;
+            background: rgba(0, 255, 249, 0.12);
+            color: #6be9e2;
+            white-space: nowrap;
+        }
+
+        /* Resume section */
+
+        .resume-section {
+            text-align: center;
+        }
+
+        .resume-section .section-head {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn-download {
+            display: inline-block;
+            margin-top: 1.6rem;
+            padding: 0.85rem 2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #f4f4f4;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #00fff9;
+        }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        .social-row a {
+            color: #9aa0a6;
+            transition: color 0.2s ease;
+        }
+
+        .social-row a:hover {
+            color: #00fff9;
+        }
+
         footer {
             text-align: center;
             padding: 2.5rem 1rem 3rem;
@@ -317,64 +766,377 @@
 
 <body>
     <section class="hero" id="hero">
-        <h1 class="glitch" data-text="Hi, I'm Nikhil, an engineer">Hi, I'm Nikhil, an engineer</h1>
-        <p class="subtitle">Robotics &middot; Automation &middot; ARTPARK</p>
+        <div class="hero-bg">
+            <div class="marquee">
+                <div class="marquee-track">
+                    <img src="images/work/harvest-wide.jpg" alt="" loading="lazy">
+                    <img src="images/work/greenhouse-portrait.jpg" alt="" loading="lazy">
+                    <img src="images/work/can-sort.jpg" alt="" loading="lazy">
+                    <img src="images/work/teleop-arm.jpg" alt="" loading="lazy">
+                    <img src="images/work/harvest-wide.jpg" alt="" loading="lazy">
+                    <img src="images/work/greenhouse-portrait.jpg" alt="" loading="lazy">
+                    <img src="images/work/can-sort.jpg" alt="" loading="lazy">
+                    <img src="images/work/teleop-arm.jpg" alt="" loading="lazy">
+                </div>
+            </div>
 
-        <a class="scroll-cue" href="#work">
-            Selected Work
+            <div class="marquee reverse">
+                <div class="marquee-track">
+                    <img src="images/work/soft-arm.jpg" alt="" loading="lazy">
+                    <img src="images/work/weld-arc.jpg" alt="" loading="lazy">
+                    <img src="images/work/weld-observe.jpg" alt="" loading="lazy">
+                    <img src="images/work/weld-planning.jpg" alt="" loading="lazy">
+                    <img src="images/work/soft-arm.jpg" alt="" loading="lazy">
+                    <img src="images/work/weld-arc.jpg" alt="" loading="lazy">
+                    <img src="images/work/weld-observe.jpg" alt="" loading="lazy">
+                    <img src="images/work/weld-planning.jpg" alt="" loading="lazy">
+                </div>
+            </div>
+
+            <div class="marquee">
+                <div class="marquee-track">
+                    <img src="images/work/traj-1.jpg" alt="" loading="lazy">
+                    <img src="images/work/traj-2.jpg" alt="" loading="lazy">
+                    <img src="images/work/traj-3.jpg" alt="" loading="lazy">
+                    <img src="images/work/team-build.jpg" alt="" loading="lazy">
+                    <img src="images/work/collage.jpg" alt="" loading="lazy">
+                    <img src="images/work/traj-1.jpg" alt="" loading="lazy">
+                    <img src="images/work/traj-2.jpg" alt="" loading="lazy">
+                    <img src="images/work/traj-3.jpg" alt="" loading="lazy">
+                    <img src="images/work/team-build.jpg" alt="" loading="lazy">
+                    <img src="images/work/collage.jpg" alt="" loading="lazy">
+                </div>
+            </div>
+        </div>
+
+        <div class="scrim"></div>
+
+        <div class="hero-content">
+            <h1 class="glitch" data-text="Hi, I'm Nikhil, a Robotics engineer">Hi, I'm Nikhil, a Robotics engineer</h1>
+            <p class="subtitle">Motion Planning &middot; Control &middot; Optimization</p>
+        </div>
+
+        <a class="scroll-cue" href="#menu" aria-label="Scroll to menu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </a>
     </section>
 
-    <section class="work" id="work">
-        <div class="work-header">
-            <h2>Selected Work</h2>
-            <p>A few robots I've built, trained, or pointed at hard problems.</p>
+    <nav class="tile-nav-wrap" id="menu">
+        <div class="tab-bar">
+            <button class="nav-tile" data-target="about"><span class="tile-label">About</span></button>
+            <button class="nav-tile" data-target="experience"><span class="tile-label">Experience</span></button>
+            <button class="nav-tile" data-target="education"><span class="tile-label">Education</span></button>
+            <button class="nav-tile" data-target="publications"><span class="tile-label">Publications</span></button>
+            <button class="nav-tile" data-target="skills"><span class="tile-label">Skills</span></button>
+            <button class="nav-tile" data-target="projects"><span class="tile-label">Projects</span></button>
+            <button class="nav-tile" data-target="resume"><span class="tile-label">Resume</span></button>
+        </div>
+    </nav>
+
+    <div class="viewport-wrap">
+        <button class="page-arrow prev" id="page-prev" aria-label="Previous section">&#8249;</button>
+        <button class="page-arrow next" id="page-next" aria-label="Next section">&#8250;</button>
+
+        <div class="sections-viewport" id="sections-viewport">
+
+    <section class="section" id="about">
+        <div class="section-head">
+            <h2>About</h2>
+            <span class="accent-bar"></span>
+        </div>
+        <p class="lede">
+            Robotics software engineer with 3+ years building C++, Python, and MATLAB/Simulink systems across
+            ROS 2, simulation, perception, planning, control, and sensor integration &mdash; from industrial
+            robotics and autonomous systems to research-driven applications. Strong foundation in systems and
+            control: modelling, Kalman filtering, optimal control, MPC, and reinforcement learning. I like
+            turning complex technical requirements into working software, validated through simulation and
+            field testing, and communicating it clearly to scientists, engineers, and clients.
+        </p>
+    </section>
+
+    <section class="section" id="experience">
+        <div class="section-head">
+            <h2>Experience</h2>
+            <span class="accent-bar"></span>
         </div>
 
-        <img class="banner" src="images/work/collage.jpg" alt="Collage of robotics projects" loading="lazy">
+        <div class="timeline-item">
+            <div class="timeline-row">
+                <div class="role-block">
+                    <div class="logo-group">
+                        <img class="company-logo" src="logos/exp/favicon-alten.webp" alt="ALTEN logo">
+                        <img class="company-logo" src="logos/exp/Logo-Grimbergen-Industrial-Systems-home.png" alt="Grimbergen Industrial Systems logo">
+                    </div>
+                    <div>
+                        <h3>Mechatronics Consultant</h3>
+                        <p class="org">ALTEN Nederland B.V. &mdash; Client: Grimbergen Industrial Systems, Netherlands</p>
+                    </div>
+                </div>
+                <span class="date">Nov 2025 &ndash; Present</span>
+            </div>
+            <ul>
+                <li>Developing an end-to-end robotic welding workflow (perception &rarr; planning &rarr; execution)
+                    using ROS2, MoveIt2, and custom control interfaces in a Docker-based C++/Python environment.</li>
+                <li>Ported legacy ROS1 industrial robot drivers to ROS2 and built a custom ROS2 Control hardware
+                    interface (C++) for a FANUC 30iB controller over TCP/IP.</li>
+                <li>Integrated a Zivid 3D camera and industrial laser scanner for perception-driven welding,
+                    implementing point-cloud pipelines (Open3D, PCL) for plane/edge detection and weld-seam
+                    localization.</li>
+                <li>Ran feasibility analysis on hydraulic excavator automation and built a full ROS2/Gazebo/MoveIt2
+                    simulation pipeline, including closed-chain linkage modelling and custom inverse kinematics.</li>
+            </ul>
+        </div>
 
-        <div class="marquee">
-            <div class="marquee-track">
-                <img src="images/work/harvest-wide.jpg" alt="" loading="lazy">
-                <img src="images/work/greenhouse-portrait.jpg" alt="" loading="lazy">
-                <img src="images/work/can-sort.jpg" alt="" loading="lazy">
-                <img src="images/work/teleop-arm.jpg" alt="" loading="lazy">
-                <img src="images/work/harvest-wide.jpg" alt="" loading="lazy">
-                <img src="images/work/greenhouse-portrait.jpg" alt="" loading="lazy">
-                <img src="images/work/can-sort.jpg" alt="" loading="lazy">
-                <img src="images/work/teleop-arm.jpg" alt="" loading="lazy">
+        <div class="timeline-item">
+            <div class="timeline-row">
+                <div class="role-block">
+                    <img class="company-logo" src="logos/exp/eternal_ag_robotics_logo.jpeg" alt="Eternal.ag logo">
+                    <div>
+                        <h3>Visiting Robotics Engineer</h3>
+                        <p class="org">Eternal.ag, Germany</p>
+                    </div>
+                </div>
+                <span class="date">May 2025 &ndash; Aug 2025</span>
+            </div>
+            <ul>
+                <li>Contributed to deployment and field testing of a greenhouse mobile manipulation platform
+                    combining a custom mobile base with a UR5e manipulator.</li>
+                <li>Supported integration and debugging of the MoveIt-based manipulation stack and perception
+                    pipeline, resolving calibration, planning, and execution issues on-site.</li>
+                <li>Developed a ROS2 driver in C++ for a custom mobile base using CANopen motor controllers
+                    (PDO/SDO communication, object dictionary mapping) for actuation and real-time odometry.</li>
+                <li>Integrated GPU-accelerated components from the NVIDIA Isaac stack (cuMotion, nvBlox) for
+                    perception and motion planning.</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-row">
+                <div class="role-block">
+                    <img class="company-logo" src="logos/exp/accelerationrobotics_logo.jpeg" alt="Acceleration Robotics logo">
+                    <div>
+                        <h3>Robotics Engineer</h3>
+                        <p class="org">Acceleration Robotics, Pune &mdash; Client: DRDO&ndash;CAIR, Bengaluru, India</p>
+                    </div>
+                </div>
+                <span class="date">Sept 2022 &ndash; Aug 2023</span>
+            </div>
+            <ul>
+                <li>Led development of multi-domain simulation environments (ground, aerial, underwater) in
+                    Gazebo to validate autonomy stacks before hardware testing.</li>
+                <li>Ported simulation features and plugins from Gazebo Classic to modern Gazebo (Ignition),
+                    developing custom C++ model and sensor plugins.</li>
+                <li>Architected a plugin-based ROS 2 sensor fusion framework in C++ on the ANYbotics GridMap
+                    library for multi-layer environmental representation.</li>
+                <li>Designed fusion algorithms combining 3D LiDAR and camera data into unified costmaps for
+                    navigation and perception, and served as primary technical interface for the client.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section" id="education">
+        <div class="section-head">
+            <h2>Education</h2>
+            <span class="accent-bar"></span>
+        </div>
+
+        <div class="edu-item">
+            <div class="timeline-row">
+                <div>
+                    <h3>Delft University of Technology (TU Delft)</h3>
+                    <p class="org">MSc Systems and Control &mdash; Cum Laude</p>
+                </div>
+                <span class="date">2023 &ndash; 2025</span>
+            </div>
+            <p class="detail">
+                Courses: 8.43/10 &middot; Thesis: 9.0/10 &mdash; <em>Optimal Control of Soft Robots.</em>
+                Investigated Differential Dynamic Programming (DDP) for continuum soft robots modelled with the
+                Geometric Variable Strain (GVS) framework, benchmarked against Partial Feedback Linearization on
+                a soft inverted pendulum, using analytical gradients (RNEA) to improve convergence.
+            </p>
+        </div>
+
+        <div class="edu-item">
+            <div class="timeline-row">
+                <div>
+                    <h3>National Institute of Technology Karnataka</h3>
+                    <p class="org">B.Tech, Electrical and Electronics Engineering, minor in Computer Science</p>
+                </div>
+                <span class="date">2018 &ndash; 2022</span>
+            </div>
+            <p class="detail">CGPA: 8.42/10</p>
+        </div>
+    </section>
+
+    <section class="section" id="publications">
+        <div class="section-head">
+            <h2>Publications</h2>
+            <span class="accent-bar"></span>
+        </div>
+
+        <ul class="pub-list">
+            <li class="pub-item">
+                <strong>N. Nair</strong>, D. Caradonna, A. T. Mathew, F. Renda, C. Della Santina, D. Feliu-Talegón,
+                <a href="https://drive.google.com/file/d/1najC7ucOmu8qEfPPidT854NyIiNNwU56/view?usp=sharing" target="_blank" rel="noopener">
+                    &ldquo;Stabilizing Low-Stiffness Soft Robots at Unstable Equilibria: A Model-Based Optimal Control Approach&rdquo;
+                </a>, <span class="venue">to appear in Proc. 2026 IEEE 65th Conference on Decision and Control (CDC), Dec. 2026.</span>
+                <span class="pill">Accepted</span>
+            </li>
+            <li class="pub-item">
+                D. Caradonna, <strong>N. Nair</strong>, A. T. Mathew, D. Feliu-Talegón, I. Afgan, E. Falotico, C. Della Santina, F. Renda,
+                <a href="https://arxiv.org/abs/2602.03435" target="_blank" rel="noopener">
+                    &ldquo;Soft Swing-up: Benchmarking Model-Based Optimal Control for Rigid-Soft Underactuated Systems&rdquo;
+                </a>, <span class="venue">arXiv preprint, 2026.</span>
+                <span class="pill">Submitted &mdash; RAL</span>
+            </li>
+            <li class="pub-item">
+                R. Muduli, <strong>N. Nair</strong>, S. Kulkarni, M. Singhal, D. Jena, T. Moger,
+                <a href="https://ieeexplore.ieee.org/document/10245225" target="_blank" rel="noopener">
+                    &ldquo;Load Frequency Control of Two-area Power System Using an Actor-Critic Reinforcement Learning Method-based Adaptive PID Controller&rdquo;
+                </a>, <span class="venue">2023 IEEE 3rd International Conference on Sustainable Energy and Future Electric Transportation (SEFET), Bhubaneswar, India, 2023, pp. 1-6.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="section" id="skills">
+        <div class="section-head">
+            <h2>Skills</h2>
+            <span class="accent-bar"></span>
+        </div>
+
+        <div class="skills-group">
+            <p class="skills-label">Languages</p>
+            <div class="skill-tags">
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">MATLAB &amp; Simulink</span>
+                <span class="skill-tag">C</span>
             </div>
         </div>
 
-        <div class="marquee reverse">
-            <div class="marquee-track">
-                <img src="images/work/soft-arm.jpg" alt="" loading="lazy">
-                <img src="images/work/weld-arc.jpg" alt="" loading="lazy">
-                <img src="images/work/weld-observe.jpg" alt="" loading="lazy">
-                <img src="images/work/weld-planning.jpg" alt="" loading="lazy">
-                <img src="images/work/soft-arm.jpg" alt="" loading="lazy">
-                <img src="images/work/weld-arc.jpg" alt="" loading="lazy">
-                <img src="images/work/weld-observe.jpg" alt="" loading="lazy">
-                <img src="images/work/weld-planning.jpg" alt="" loading="lazy">
+        <div class="skills-group">
+            <p class="skills-label">Robotics Middleware &amp; Simulation</p>
+            <div class="skill-tags">
+                <span class="skill-tag">ROS 1</span>
+                <span class="skill-tag">ROS 2</span>
+                <span class="skill-tag">ROS2 Control</span>
+                <span class="skill-tag">MoveIt / MoveIt2</span>
+                <span class="skill-tag">Gazebo (Classic &amp; Ignition)</span>
             </div>
         </div>
 
-        <div class="marquee">
-            <div class="marquee-track">
-                <img src="images/work/traj-1.jpg" alt="" loading="lazy">
-                <img src="images/work/traj-2.jpg" alt="" loading="lazy">
-                <img src="images/work/traj-3.jpg" alt="" loading="lazy">
-                <img src="images/work/team-build.jpg" alt="" loading="lazy">
-                <img src="images/work/traj-1.jpg" alt="" loading="lazy">
-                <img src="images/work/traj-2.jpg" alt="" loading="lazy">
-                <img src="images/work/traj-3.jpg" alt="" loading="lazy">
-                <img src="images/work/team-build.jpg" alt="" loading="lazy">
+        <div class="skills-group">
+            <p class="skills-label">Perception &amp; ML</p>
+            <div class="skill-tags">
+                <span class="skill-tag">OpenCV</span>
+                <span class="skill-tag">PCL</span>
+                <span class="skill-tag">Open3D</span>
+                <span class="skill-tag">YOLOv4</span>
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">NVIDIA Isaac (cuMotion, nvBlox)</span>
+            </div>
+        </div>
+
+        <div class="skills-group">
+            <p class="skills-label">Tools &amp; Infrastructure</p>
+            <div class="skill-tags">
+                <span class="skill-tag">Docker &amp; Docker Compose</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">Linux</span>
+                <span class="skill-tag">CMake</span>
+            </div>
+        </div>
+
+        <div class="skills-group">
+            <p class="skills-label">Hardware &amp; Comms</p>
+            <div class="skill-tags">
+                <span class="skill-tag">CANopen (PDO/SDO)</span>
+                <span class="skill-tag">Industrial TCP/IP (FANUC)</span>
+                <span class="skill-tag">Zivid 3D Cameras</span>
+                <span class="skill-tag">PCB Design</span>
             </div>
         </div>
     </section>
+
+    <section class="section" id="projects">
+        <div class="section-head">
+            <h2>Projects</h2>
+            <span class="accent-bar"></span>
+        </div>
+
+        <div class="card-grid">
+            <div class="project-card">
+                <div class="card-top">
+                    <h3>Janitorial Cleaning Robot</h3>
+                    <div class="card-links">
+                        <a href="https://github.com/NickNair/artpark_robotics_challenge" target="_blank" rel="noopener" aria-label="GitHub repository">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=HfuiV0cgzNs" target="_blank" rel="noopener" aria-label="Watch video">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <span class="date">ARTPARK Robotics Challenge, IISc Bangalore &middot; Jan &ndash; Apr 2022</span>
+                <p class="desc">
+                    Designed and built a ROS1-based janitorial robot for autonomous washroom cleaning: trash
+                    detection, washbasin sanitization, and floor mopping. Built a holonomic base with a custom
+                    6-DOF daisy-chained servo arm, did the PCB design for the electronics subsystem, and delivered
+                    a Gazebo simulation ahead of the hardware round on a $5000 budget. Navigation used LiDAR and
+                    depth camera with a YOLOv4-based detection pipeline.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <div class="card-top">
+                    <h3>Automatic Generation Control Using an Adaptive PID controller</h3>
+                    <div class="card-links">
+                        <a href="https://github.com/NickNair/Adaptive-PID-controller" target="_blank" rel="noopener" aria-label="GitHub repository">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <span class="date">Bachelor Thesis, NIT Karnataka &middot; Jan &ndash; Apr 2022</span>
+                <p class="supervisor">Under the guidance of Dr. Debashisha Jena, Associate Professor</p>
+                <p class="desc">
+                    Actor-Critic Reinforcement Learning-based adaptive PID controller for Automatic Generation
+                    Control (AGC) of a two-area power system. Updates PID parameters in real time rather than
+                    relying on an accurate plant model, making it more adaptable to varying system configurations.
+                </p>
+                <p class="paper-link">Link to paper: <a href="https://ieeexplore.ieee.org/document/10245225" target="_blank" rel="noopener">IEEE Xplore</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section resume-section" id="resume">
+        <div class="section-head">
+            <h2>Resume</h2>
+            <span class="accent-bar"></span>
+        </div>
+        <p class="lede" style="margin: 0 auto;">Full details on experience, education, and skills in one PDF.</p>
+        <a class="btn-download" href="resume.pdf" download>Download Resume</a>
+
+        <div class="social-row">
+            <a href="https://github.com/NickNair" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/nicknair/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&amp;user=sPGKHooAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zm0 8.83L4.24 8 12 4.17 19.76 8 12 11.83zM5 13.18v3.02c0 1.6 3.13 3.8 7 3.8s7-2.2 7-3.8v-3.02l-7 3.82-7-3.82z"/></svg>
+            </a>
+            <a href="mailto:nikhilnicky972@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6H4zm16 12V8.24l-8 5.99-8-5.99V18h16z"/></svg>
+            </a>
+        </div>
+    </section>
+
+        </div>
+    </div>
 
     <footer>
         &copy; 2026 Nikhil Nair
@@ -389,16 +1151,18 @@
 
     <script>
         // ---- Hero glitch: English/Dutch swap ----
-        const EN = "Hi, I'm Nikhil, an engineer";
-        const NL = "Hoi, ik ben Nikhil, een ingenieur";
+        const LANGS = [
+            "Hi, I'm Nikhil, a Robotics engineer",
+            "Hoi, ik ben Nikhil, een Robotica-ingenieur"
+        ];
         const glitchEl = document.querySelector('.glitch');
-        let showingEn = true;
+        let langIndex = 0;
 
         function swapLanguage() {
             glitchEl.classList.add('burst');
             setTimeout(() => {
-                showingEn = !showingEn;
-                const text = showingEn ? EN : NL;
+                langIndex = (langIndex + 1) % LANGS.length;
+                const text = LANGS[langIndex];
                 glitchEl.textContent = text;
                 glitchEl.setAttribute('data-text', text);
             }, 180);
@@ -409,10 +1173,60 @@
 
         setInterval(swapLanguage, 3200);
 
+        // ---- Tile nav: horizontal scroll to section ----
+        const viewport = document.getElementById('sections-viewport');
+        const panels = Array.from(viewport.querySelectorAll(':scope > .section'));
+        const navTiles = document.querySelectorAll('.nav-tile');
+
+        function currentPanelIndex() {
+            let closest = 0;
+            let minDiff = Infinity;
+            panels.forEach((panel, i) => {
+                const diff = Math.abs(panel.offsetLeft - viewport.scrollLeft);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    closest = i;
+                }
+            });
+            return closest;
+        }
+
+        function scrollToPanel(id) {
+            const panel = document.getElementById(id);
+            if (!panel) return;
+            viewport.scrollTo({ left: panel.offsetLeft, behavior: 'smooth' });
+        }
+
+        navTiles.forEach((tile) => {
+            tile.addEventListener('click', () => scrollToPanel(tile.dataset.target));
+        });
+
+        document.getElementById('page-prev').addEventListener('click', () => {
+            const idx = currentPanelIndex();
+            if (idx > 0) scrollToPanel(panels[idx - 1].id);
+        });
+
+        document.getElementById('page-next').addEventListener('click', () => {
+            const idx = currentPanelIndex();
+            if (idx < panels.length - 1) scrollToPanel(panels[idx + 1].id);
+        });
+
+        const panelObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
+                    navTiles.forEach((tile) => {
+                        tile.classList.toggle('active', tile.dataset.target === entry.target.id);
+                    });
+                }
+            });
+        }, { root: viewport, threshold: [0.6] });
+
+        panels.forEach((panel) => panelObserver.observe(panel));
+
         // ---- Lightbox ----
         const lightbox = document.getElementById('lightbox');
         const lbImg = document.getElementById('lb-img');
-        const clickable = document.querySelectorAll('.banner, .marquee-track img');
+        const clickable = document.querySelectorAll('.marquee-track img');
         const items = [...new Set(Array.from(clickable).map((img) => img.src))];
         let currentIndex = 0;
 
