@@ -16,20 +16,25 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            height: 100%;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             background: #0d0f12;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: #f4f4f4;
             font-family: 'Lato', sans-serif;
-            overflow: hidden;
         }
 
-        .glitch-wrap {
+        /* ---------- Hero ---------- */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
             padding: 2rem;
             text-align: center;
         }
@@ -103,34 +108,353 @@
             50%  { transform: translate(-1px, 1px); }
             100% { transform: translate(1px, -1px); }
         }
+
+        .subtitle {
+            margin-top: 1.1rem;
+            color: #9aa0a6;
+            font-size: clamp(0.9rem, 1.6vw, 1.15rem);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #6c7278;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.2s ease;
+        }
+
+        .scroll-cue:hover {
+            color: #f4f4f4;
+        }
+
+        .scroll-cue svg {
+            width: 18px;
+            height: 18px;
+            animation: bounce 1.8s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* ---------- Work section ---------- */
+
+        .work {
+            padding: 5rem 1.5rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .work-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .work-header h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 900;
+        }
+
+        .work-header p {
+            margin-top: 0.75rem;
+            color: #9aa0a6;
+            font-size: 1rem;
+        }
+
+        .banner {
+            display: block;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            cursor: pointer;
+        }
+
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+        }
+
+        .marquee + .marquee {
+            margin-top: 1.1rem;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            gap: 1.1rem;
+            animation: scroll-x 38s linear infinite;
+        }
+
+        .marquee:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        .marquee.reverse .marquee-track {
+            animation-direction: reverse;
+        }
+
+        .marquee-track img {
+            height: 220px;
+            width: auto;
+            border-radius: 8px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+            transition: transform 0.3s ease;
+        }
+
+        .marquee-track img:hover {
+            transform: scale(1.04);
+        }
+
+        @keyframes scroll-x {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @media (max-width: 700px) {
+            .marquee-track img {
+                height: 140px;
+            }
+        }
+
+        /* ---------- Lightbox ---------- */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 7, 9, 0.94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            z-index: 100;
+            padding: 2rem;
+        }
+
+        .lightbox.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox img {
+            max-width: min(90vw, 1000px);
+            max-height: 85vh;
+            border-radius: 6px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .lb-btn {
+            position: absolute;
+            background: none;
+            border: none;
+            color: #f4f4f4;
+            font-size: 2.2rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0.5rem;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .lb-btn:hover {
+            opacity: 1;
+        }
+
+        .lb-close {
+            top: 1.2rem;
+            right: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .lb-prev {
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lb-next {
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 600px) {
+            .lb-prev, .lb-next {
+                font-size: 1.6rem;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem 3rem;
+            color: #5c6167;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 
 <body>
-    <div class="glitch-wrap">
+    <section class="hero" id="hero">
         <h1 class="glitch" data-text="Hi, I'm Nikhil, an engineer">Hi, I'm Nikhil, an engineer</h1>
+        <p class="subtitle">Robotics &middot; Automation &middot; ARTPARK</p>
+
+        <a class="scroll-cue" href="#work">
+            Selected Work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+    </section>
+
+    <section class="work" id="work">
+        <div class="work-header">
+            <h2>Selected Work</h2>
+            <p>A few robots I've built, trained, or pointed at hard problems.</p>
+        </div>
+
+        <img class="banner" src="images/work/collage.jpg" alt="Collage of robotics projects" loading="lazy">
+
+        <div class="marquee">
+            <div class="marquee-track">
+                <img src="images/work/harvest-wide.jpg" alt="" loading="lazy">
+                <img src="images/work/greenhouse-portrait.jpg" alt="" loading="lazy">
+                <img src="images/work/can-sort.jpg" alt="" loading="lazy">
+                <img src="images/work/teleop-arm.jpg" alt="" loading="lazy">
+                <img src="images/work/harvest-wide.jpg" alt="" loading="lazy">
+                <img src="images/work/greenhouse-portrait.jpg" alt="" loading="lazy">
+                <img src="images/work/can-sort.jpg" alt="" loading="lazy">
+                <img src="images/work/teleop-arm.jpg" alt="" loading="lazy">
+            </div>
+        </div>
+
+        <div class="marquee reverse">
+            <div class="marquee-track">
+                <img src="images/work/soft-arm.jpg" alt="" loading="lazy">
+                <img src="images/work/weld-arc.jpg" alt="" loading="lazy">
+                <img src="images/work/weld-observe.jpg" alt="" loading="lazy">
+                <img src="images/work/weld-planning.jpg" alt="" loading="lazy">
+                <img src="images/work/soft-arm.jpg" alt="" loading="lazy">
+                <img src="images/work/weld-arc.jpg" alt="" loading="lazy">
+                <img src="images/work/weld-observe.jpg" alt="" loading="lazy">
+                <img src="images/work/weld-planning.jpg" alt="" loading="lazy">
+            </div>
+        </div>
+
+        <div class="marquee">
+            <div class="marquee-track">
+                <img src="images/work/traj-1.jpg" alt="" loading="lazy">
+                <img src="images/work/traj-2.jpg" alt="" loading="lazy">
+                <img src="images/work/traj-3.jpg" alt="" loading="lazy">
+                <img src="images/work/team-build.jpg" alt="" loading="lazy">
+                <img src="images/work/traj-1.jpg" alt="" loading="lazy">
+                <img src="images/work/traj-2.jpg" alt="" loading="lazy">
+                <img src="images/work/traj-3.jpg" alt="" loading="lazy">
+                <img src="images/work/team-build.jpg" alt="" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Nikhil Nair
+    </footer>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lb-btn lb-close" id="lb-close" aria-label="Close">&times;</button>
+        <button class="lb-btn lb-prev" id="lb-prev" aria-label="Previous">&lsaquo;</button>
+        <img id="lb-img" src="" alt="">
+        <button class="lb-btn lb-next" id="lb-next" aria-label="Next">&rsaquo;</button>
     </div>
 
     <script>
+        // ---- Hero glitch: English/Dutch swap ----
         const EN = "Hi, I'm Nikhil, an engineer";
         const NL = "Hoi, ik ben Nikhil, een ingenieur";
-        const el = document.querySelector('.glitch');
+        const glitchEl = document.querySelector('.glitch');
         let showingEn = true;
 
         function swapLanguage() {
-            el.classList.add('burst');
+            glitchEl.classList.add('burst');
             setTimeout(() => {
                 showingEn = !showingEn;
                 const text = showingEn ? EN : NL;
-                el.textContent = text;
-                el.setAttribute('data-text', text);
+                glitchEl.textContent = text;
+                glitchEl.setAttribute('data-text', text);
             }, 180);
             setTimeout(() => {
-                el.classList.remove('burst');
+                glitchEl.classList.remove('burst');
             }, 550);
         }
 
         setInterval(swapLanguage, 3200);
+
+        // ---- Lightbox ----
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lb-img');
+        const clickable = document.querySelectorAll('.banner, .marquee-track img');
+        const items = [...new Set(Array.from(clickable).map((img) => img.src))];
+        let currentIndex = 0;
+
+        function openLightbox(src) {
+            currentIndex = items.indexOf(src);
+            renderLightbox();
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function renderLightbox() {
+            lbImg.src = items[currentIndex];
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function showNext(delta) {
+            currentIndex = (currentIndex + delta + items.length) % items.length;
+            renderLightbox();
+        }
+
+        clickable.forEach((img) => {
+            img.addEventListener('click', () => openLightbox(img.src));
+        });
+
+        document.getElementById('lb-close').addEventListener('click', closeLightbox);
+        document.getElementById('lb-next').addEventListener('click', () => showNext(1));
+        document.getElementById('lb-prev').addEventListener('click', () => showNext(-1));
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNext(1);
+            if (e.key === 'ArrowLeft') showNext(-1);
+        });
     </script>
 </body>
 
